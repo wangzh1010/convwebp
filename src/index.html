@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ConvertWebp</title>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="wrapper">
+            <div class="left">
+                <div class="row"> 图片类型 {{extensions.join('、')}} </div>
+                <div class="row"> 文件大小 <input class="conv-ipt" type="text" v-model="minSize"> B </div>
+                <div class="row"> 输出地址 <input class="conv-ipt" type="text" spellcheck="false" v-model="publicPath"> </div>
+                <div class="row">
+                    <button @click="chooseFiles">选择文件</button>
+                    <div class="wrap">
+                        <p v-for="path in filePaths">{{path}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <button @click="chooseImages">选择图片</button>
+                    <div class="wrap">
+                        <p>{{imagePath}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <button @click="convert">确定</button>
+                </div>
+            </div>
+            <div class="right">
+                <div class="process-info" v-for="(processed,filePath) in results">
+                    <dl>
+                        <dt>{{filePath}}</dt>
+                        <template v-if="processed.length > 0">
+                            <dd v-for="filename in processed">
+                                {{filename}} &raquo; {{filename}}<span class="green">.webp</span>
+                            </dd>
+                        </template>
+                        <template v-else>
+                            <dd>no change !</dd>
+                        </template>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

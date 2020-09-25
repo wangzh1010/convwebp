@@ -1,0 +1,5 @@
+{
+    "minSize": 10240,
+    "extensions": ["png", "jpg"],
+    "publicPath": "https://himg.china.cn/img/"
+}
